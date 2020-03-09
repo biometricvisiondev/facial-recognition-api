@@ -1,4 +1,4 @@
-![Logo](https://biometricvision.com/git_images/medlogo.png) 
+![Logo](https://biometricvision.com/git_images/logo_white_sm.png) 
 
 # Introduction
 
