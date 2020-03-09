@@ -116,9 +116,7 @@ We do have the swagger for those two APIs. You can download it here:
 
 If you run into any issues or problems you are welcome to file a github issue or simple talk to me via app.biometricvision.com/dashboard once you have access.
 
-### Some Key Features
-
-| Technical specifications |
+| Technical Features |
 | ------ |
 | Face match time of 130ms|
 | False Accept Rate is 0.1%, False Reject Rate is 0.14% | 
