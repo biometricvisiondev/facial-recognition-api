@@ -1,4 +1,4 @@
-![Logo](https://biometricvision.com/git_images/logosmall.png) 
+![Logo](https://biometricvision.com/git_images/medlogo.png) 
 
 # Introduction
 
@@ -108,11 +108,33 @@ curl -X POST -H "Content-Type: application/json" \
 If the two images are not the same person `Confidence` will be "No Match".
 
 ### Swagger Spec
+
 We do have the swagger for those two APIs. You can download it here:
 * [Download Swagger Spec][PlGh]
 
 ### Need Support
+
 If you run into any issues or problems you are welcome to file a github issue or simple talk to me via app.biometricvision.com/dashboard once you have access.
+
+### Some Key Features
+
+| Technical specifications |
+| ------ |
+| Face match time of 130ms|
+| False Accept Rate is 0.1%, False Reject Rate is 0.14% | 
+| Proprietary method for storing face templates as an anonymous alphanumeric string of code (binary) | 
+| Threshold for ‘Match’ is >=70% | 
+| Image formats supported: jpg, jpeg, png, bmp | 
+| Built using Python with machine learning | 
+| Uses 180 landmarks to create a face template | 
+
+### Release Plan
+| Feature | Release Date |
+| ------ | ------ |
+| Verification (1:1) | Live |
+| Identification (1:N) | March 2020|
+| Anti-spoofing | April 2020 |
+| Liveness detection | April 2020 |
 
 **Enjoy!**
 
