@@ -1,37 +1,122 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/biometricvisiondev/facial_recognition/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Introduction
+Recognize and compare faces in minutes with this simple to use cloud based facial recognition API. This model has a match accuracy of 99.9% so it works under extreme conditions (Long distance, pixelation, blurred images and high/low contrast). **This tutorial shows you how to compare between two images.**
 
-### Markdown
+### Example
+This image below is a demo showing the results of two images matching as the same person:
+![Demo](https://biometricvision.com/git_images/match_man.jpg) 
+#### Results
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```json
+{
+    "Confidence": "Match",
+    "Features": {
+        "Left Eye": "92.52",
+        "Right Eye": "86.04",
+        "Left Brow": "91.45",
+        "Right Brow": "90.31",
+        "Forehead": "90.91",
+        "Middle Forehead": "89.70",
+        "Nose": "87.82",
+        "Philtrum": "93.20",
+        "Mouth": "91.65",
+        "Jaw": "93.75",
+        "Left Cheek": "86.44",
+        "Right Cheek": "88.50"
+}
+```
+[You can find a working demo UI here](https://bvengine.com)
 
-```markdown
-Syntax highlighted code block
+The 99.9% match accuracy means it will work under extreme conditions:
+![Demo](https://biometricvision.com/git_images/extreme_matching.gif)
 
-# Header 1
-## Header 2
-### Header 3
+# Getting Started
+There are three steps to use the API:
+  1. Get your the API Key, Client ID and Secret Key.
+  2. Create an OAuth 2.0 Token.
+  3. Upload two images to the compare API.
 
-- Bulleted
-- List
+You can use our postman collection to test your API.
+* [Download PostMan Collection][PlDb]
 
-1. Numbered
-2. List
+### Step 1: Get your the API Key, Client ID and Secret Key
 
-**Bold** and _Italic_ and `Code` text
+You can quickly generate your API Key, Client ID and Secret Key by signing up here. Don't worry it's free for 90 days and you don't need to enter credit card details.
 
-[Link](url) and ![Image](src)
+* [Get your free API access details](https://app.biometricvision.com/auth/sign-up)
+
+### Step 2: Create an OAuth 2.0 Token
+To access the compare API you will need an OAuth 2.0 Token. So, you will need your Client ID and Secret Key to create it.
+Below is an example for creating OAuth 2.0 Token using CURL.
+```sh
+curl -X POST -H "Content-Type: application/json" \
+     --data "{\"client_id\": \"CLIENT_ID\",\"client_secret\": \"SECRET_KEY\", \"grant_type\":\"client_credentials\"}" \
+     https://bvengine.com/oauth/token
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Response:
 
-### Jekyll Themes
+```json
+{
+	"token_type": "Bearer",
+	"expires_in": 3600,
+	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyNTQxMTQ1NiIsImp0aSI6IjNiNTg2YzZjMDdkODBhZThjYWYwMGFlYWI3ZDFiN2E2MjZjZjM0YjgxODJiZjlhOWE0MWMyNjI1YWEzN2YxNTYzNWFjYzVjM2JiNWNhODY2IiwiaWF0IjoxNTgzMjg4OTA4LCJuYmYiOjE1ODMyODg5MDgsImV4cCI6MTU4MzI5MjUwOCwic3ViIjoiIiwic2NvcGVzIjpbXX0.NdZyMzYgYt4dtnFa3ph9MiJGhF00tauH3yy7quBPHcUNkY7ZEysQSWt1YOvQXr1L5E5eMMsaidojYLU8Zknc112TYtbUsdiQMJQyNves_dJpE-0kna3TzE4rDwNFqZXdRCul6FGVb5AzYeH2sAmkny03584cnVZC6WsOsOJacccl1kIjKe0zBS2pKi3EqiDka8z_Er3GboXD4qxSUOvkrO4JN0qNXckIhl7q1SgXwX_JwbwU6Sxzd8y_q7tjCptca3JimRf_ad3U4k3Bp-gErhMby_SoTADrexE3uHuOK8gM1aLW8JH-Vg8rX-rX0m78OgFcC8mpLVtm2a4g1NT_o1ZFCIuJNBxa-cpE13uYgjMwyj8LKQ_xeBGJu7eaOeu5wxMqTa26IKp35lwVFcF8bHCcfjIm1JwrPoEowlBDFUd1thBaprKBRJeguHg4foO4RNK08wQrG_S0m34x_jfhpo5ljlZQyrbGb4x0FB3b-IRV5tXNE1rX8h5UnFexQX5zDHTKtr_nSFl8_HtIHAOYOywPfxpMSWHEyzq6-KY1u1rmnhRIJSVC5VledVjW8lvAfKXtAJK6K315nYWvDoDN2aZ-wftpWkPBDYzjMf9NwoA7AvlvS95_mSsiQC0l6rJor6lqMW2ELBYgRCaqwJ5ebQ1xGB_DnNXx_zwsg7Y6vV0"
+}
+```
+### Step 3: Upload two images to the compare API
+Once you get `access_token` now you will be able to use the compare API with your API Key.
+Below is an example for using the API.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/biometricvisiondev/facial_recognition/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+**Request:**
 
-### Support or Contact
+```sh
+curl -X POST -H "Content-Type: application/json" \
+     -H "Authorization: Bearer ACESS_TOKEN" \
+     -H "X-API-KEY: API_KEY" \
+     -F "image1=@/home/user/image1.jpg" \
+     -F "image2=@/home/user/image2.jpg" \
+     https://bvengine.com/api/compare
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+**Response:**
+
+```json
+{
+    "Confidence": "Match",
+    "Features": {
+        "Left Eye": "92.52",
+        "Right Eye": "86.04",
+        "Left Brow": "91.45",
+        "Right Brow": "90.31",
+        "Forehead": "90.91",
+        "Middle Forehead": "89.70",
+        "Nose": "87.82",
+        "Philtrum": "93.20",
+        "Mouth": "91.65",
+        "Jaw": "93.75",
+        "Left Cheek": "86.44",
+        "Right Cheek": "88.50"
+}
+```
+
+If the two images are not the same person `Confidence` will be "No Match".
+
+### Swagger Spec
+We do have the swagger for those two APIs. You can download it here:
+* [Download Swagger Spec][PlGh]
+
+### Todos
+
+ - Write MORE Tests
+ - Add Night Mode
+
+License
+----
+
+**Enjoy!**
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [PlDb]: <https://github.com/biometricvisiondev/facial_recognition/tree/master/postman-collection>
+   [PlGh]: <https://github.com/biometricvisiondev/facial_recognition/tree/master/swagger-spec>
