@@ -1,11 +1,14 @@
-
+![Logo](https://biometricvision.com/git_images/logosmall.png) 
 
 # Introduction
+
 Recognize and compare faces in minutes with this simple to use cloud based facial recognition API. This model has a match accuracy of 99.9% so it works under extreme conditions (Long distance, pixelation, blurred images and high/low contrast). **This tutorial shows you how to compare between two images.**
 
 ### Example
+
 This image below is a demo showing the results of two images matching as the same person:
 ![Demo](https://biometricvision.com/git_images/match_man.jpg) 
+
 #### Results
 
 ```json
@@ -32,6 +35,7 @@ The 99.9% match accuracy means it will work under extreme conditions:
 ![Demo](https://biometricvision.com/git_images/extreme_matching.gif)
 
 # Getting Started
+
 There are three steps to use the API:
   1. Get your the API Key, Client ID and Secret Key.
   2. Create an OAuth 2.0 Token.
@@ -47,6 +51,7 @@ You can quickly generate your API Key, Client ID and Secret Key by signing up he
 * [Get your free API access details](https://app.biometricvision.com/auth/sign-up)
 
 ### Step 2: Create an OAuth 2.0 Token
+
 To access the compare API you will need an OAuth 2.0 Token. So, you will need your Client ID and Secret Key to create it.
 Below is an example for creating OAuth 2.0 Token using CURL.
 ```sh
@@ -55,7 +60,7 @@ curl -X POST -H "Content-Type: application/json" \
      https://bvengine.com/oauth/token
 ```
 
-Response:
+**Response:**
 
 ```json
 {
@@ -106,17 +111,12 @@ If the two images are not the same person `Confidence` will be "No Match".
 We do have the swagger for those two APIs. You can download it here:
 * [Download Swagger Spec][PlGh]
 
-### Todos
-
- - Write MORE Tests
- - Add Night Mode
-
-License
-----
+### Need Support
+If you run into any issues or problems you are welcome to file a github issue or simple talk to me via app.biometricvision.com/dashboard once you have access.
 
 **Enjoy!**
 
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+[//]: # ()
 
    [PlDb]: <https://github.com/biometricvisiondev/facial_recognition/tree/master/postman-collection>
    [PlGh]: <https://github.com/biometricvisiondev/facial_recognition/tree/master/swagger-spec>
