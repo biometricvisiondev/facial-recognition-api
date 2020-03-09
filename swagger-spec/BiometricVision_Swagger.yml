@@ -1,0 +1,179 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'BVEngine APIs'
+  description: ''
+  contact:
+    name: 'Support BiometricVision'
+    email: 'support@biometricvision.com'
+host: 'bvengine.com'
+basePath: '/api'
+schemes:
+  - 'https'
+paths:
+  /compare:
+    post:
+      description: 'Compares Two Face Images'
+      produces:
+        - application/json
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: header
+          name: Authorization
+          description: The token from biometricOAuth2.
+          type: string
+          format: hash
+          required: true
+        - in: formData
+          name: image1
+          type: file
+          x-mimetype: image/png, image/jpeg
+          required: true
+        - in: formData
+          name: image2
+          type: file
+          x-mimetype: image/png, image/jpeg
+          required: true
+      security:
+        - biometricOAuth2:
+            - 'read:data'
+      responses:
+        200:
+          description: 'OK'
+        209:
+          $ref: '#/responses/UnexpectedError'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthenticated'
+        404:
+          $ref: '#/responses/NotFound'
+        405:
+          $ref: '#/responses/MethodNotAllowed'
+        408:
+          $ref: '#/responses/RequestTimeout'
+        422:
+          $ref: '#/responses/UnprocessableEntity'
+        429:
+          $ref: '#/responses/TooManyRequests'
+        500:
+          $ref: '#/responses/InternalServerError'
+        502:
+          $ref: '#/responses/BadGateway'
+        503:
+          $ref: '#/responses/ServiceUnavailable'
+        504:
+          $ref: '#/responses/GatewayTimeout'
+ 
+responses:
+  UnexpectedError:
+    description: The request has been received but it has an unexpected error.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: This session has been expired.
+  BadRequest:
+    description: The server could not understand the request due to invalid syntax.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request.
+  Unauthenticated:
+    description: Although the HTTP standard specifies "unauthorized", semantically this response means "unauthenticated". That is, the client must authenticate itself to get the requested response.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Unauthenticated.
+  NotFound:
+    description: The server can not find requested resource.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Not Found.
+  UnprocessableEntity:
+    description: The request was well-formed but was unable to be followed due to semantic errors.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: The given data was invalid.
+        errors:
+          type: object
+          example:
+            - image1:
+                - The image uploaded is invalid.
+  MethodNotAllowed:
+    description: The request method is known by the server but has been disabled and cannot be used.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Method Not Allowed.
+  RequestTimeout:
+    description: This response is sent on an idle connection by some servers, even without any previous request by the client. It means that the server would like to shut down this unused connection.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Request Timeout.
+  TooManyRequests:
+    description: The user has sent too many requests in a given amount of time ("rate limiting").
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Too Many Requests.
+  InternalServerError:
+    description: The server has encountered a situation it doesn't know how to handle.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Internal Server Error.
+  BadGateway:
+    description: This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Gateway.
+  ServiceUnavailable:
+    description: The server is not ready to handle the request.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example:  Service Unavailable.
+  GatewayTimeout:
+    description: This error response is given when the server is acting as a gateway and cannot get a response in time.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Gateway Timeout.
+
+securityDefinitions:
+  biometricOAuth2:
+    type: oauth2
+    flow: application
+    tokenUrl: 'https://bvengine.com/oauth/token'
+    scopes:
+      'write:data': ''
+      'read:data': ''
