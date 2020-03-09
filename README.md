@@ -114,7 +114,7 @@ We do have the swagger for those two APIs. You can download it here:
 
 ### Need Support
 
-If you run into any issues or problems you are welcome to file a github issue or simple talk to me via app.biometricvision.com/dashboard once you have access.
+If you run into any issues or problems you are welcome to file a github issue or simple talk to me via (https://app.biometricvision.com/dashboard) once you have access.
 
 | Technical Features |
 | ------ |
