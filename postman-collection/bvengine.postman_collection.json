@@ -1,0 +1,150 @@
+{
+	"id": "8ba10852-a5fd-c98b-9d1d-52f04af65b1b",
+	"name": "bvengine",
+	"description": "",
+	"order": [
+		"2e2fa586-8256-68fc-ee2f-d47c3946feab",
+		"d5ab788e-3143-46fd-53f9-a4cf72439579",
+		"9240b79a-f3f4-acab-ea4f-a98bc905b06a"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1579050356237,
+	"owner": "3036925",
+	"public": false,
+	"requests": [
+		{
+			"id": "2e2fa586-8256-68fc-ee2f-d47c3946feab",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://bvengine.com/oauth/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1582261962005,
+			"name": "Create OAuth Token",
+			"description": "",
+			"collectionId": "8ba10852-a5fd-c98b-9d1d-52f04af65b1b",
+			"responses": [],
+			"rawModeData": "{\"client_id\": {{client_id}},\"client_secret\": \"{{secret}}\", \"grant_type\":\"client_credentials\"}"
+		},
+		{
+			"id": "9240b79a-f3f4-acab-ea4f-a98bc905b06a",
+			"headers": "Accept: application/json\nAuthorization: Bearer TOKEN_HERE\nX-Token: {{token}}\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer TOKEN_HERE",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "X-Token",
+					"value": "{{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://bvengine.com/api/compare",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "image1",
+					"value": "fr_F.jpg",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "image2",
+					"value": "fr_F.jpg",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1582261997925,
+			"name": "Campare",
+			"description": "",
+			"collectionId": "8ba10852-a5fd-c98b-9d1d-52f04af65b1b",
+			"responses": []
+		},
+		{
+			"id": "d5ab788e-3143-46fd-53f9-a4cf72439579",
+			"headers": "Accept: application/json\nAuthorization: Bearer TOKEN_HERE\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer TOKEN_HERE",
+					"description": ""
+				}
+			],
+			"url": "https://bvengine.com/api/oauth/create?client_id=CLIENT_ID_HERE&secret=YOUR_SECRET_HERE",
+			"queryParams": [
+				{
+					"key": "client_id",
+					"value": "CLIENT_ID_HERE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "secret",
+					"value": "YOUR_SECRET_HERE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1582262128512,
+			"name": "Create OAuth Client",
+			"description": "",
+			"collectionId": "8ba10852-a5fd-c98b-9d1d-52f04af65b1b",
+			"responses": []
+		}
+	]
+}
