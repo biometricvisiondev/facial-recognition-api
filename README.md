@@ -111,9 +111,12 @@ curl -X POST -H "Content-Type: application/json" \
 
 If the two images are not the same person `Confidence` will be "No Match".
 
-### Step 4: Track and monitor the API stats via the dashbboard
-![Demo](https://biometricvision.com/git_images/Dashboard4.jpg) 
+### Step 4: Track and monitor the API stats via the dashboard
+
 Can be accessed here (https://app.biometricvision.com/dashboard)
+
+![Demo](https://biometricvision.com/git_images/Dashboard4.jpg) 
+
 
 ### Swagger Spec
 
