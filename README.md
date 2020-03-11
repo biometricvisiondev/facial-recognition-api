@@ -4,7 +4,7 @@
 
 Recognize and compare faces in minutes with this simple to use cloud based facial recognition API. This model has a match accuracy of 99.9% so it works under extreme conditions (Long distance, pixelation, blurred images and high/low contrast). 
 
-(https://app.biometricvision.com/dashboard) Is releasing it's API for free to get feedback from the dev community. We are really excited for everyone to test the technology.
+(https://biometricvision.com) Is releasing it's API for free to get feedback from the dev community. We are really excited for everyone to test the technology.
 
 **This tutorial shows you how to compare between two images.**
 
